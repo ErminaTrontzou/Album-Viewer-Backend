@@ -32,10 +32,6 @@ public class Album implements Serializable {
     @JsonIgnore
     private Artist artist;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="genre_id", referencedColumnName = "id")
-    @JsonIgnore
-    private Genre genre;
 
     public Album(){}
 
@@ -88,10 +84,4 @@ public class Album implements Serializable {
         this.artist = artist;
     }
 
-    public Genre getGenre() {
-        return genre;
-    }
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
 }
