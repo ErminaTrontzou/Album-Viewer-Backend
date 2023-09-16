@@ -2,9 +2,9 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Sep 09, 2023 at 06:31 PM
--- Server version: 8.0.31
+-- Host: database:3306
+-- Generation Time: Jan 04, 2023 at 02:58 PM
+-- Server version: 10.10.2-MariaDB-1:10.10.2+maria~ubu2204
 -- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -27,13 +27,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -48,60 +46,58 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- Table structure for table `album`
 --
 
-DROP TABLE IF EXISTS `album`;
-CREATE TABLE IF NOT EXISTS `album` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `artist_id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `release_date` int DEFAULT NULL,
-  `image_path` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `artist_id` (`artist_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `album` (
+  `id` int(11) NOT NULL,
+  `artist_id` int(11) NOT NULL,
+  `genre_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `release_date` year(4) NOT NULL,
+  `image_path` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `album`
 --
 
-INSERT INTO `album` (`id`, `artist_id`, `name`, `release_date`, `image_path`) VALUES
-(7, 7, '1989', 2014, 'https://static.wikia.nocookie.net/taylor-swift/images/3/3a/Possible1989tvcover.jpg'),
-(8, 7, 'Midnights', 2022, 'https://upload.wikimedia.org/wikipedia/en/9/9f/Midnights_-_Taylor_Swift.png'),
-(9, 8, 'Justified', 2002, 'https://upload.wikimedia.org/wikipedia/en/e/ed/Justified_-_Justin_Timberlake.png'),
-(11, 9, 'The Fame Monster', 2009, 'https://upload.wikimedia.org/wikipedia/en/4/45/The_Fame_Monster.png'),
-(13, 11, 'Thriller ', 1982, 'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png'),
-(15, 10, 'Arrival ', 1976, 'https://upload.wikimedia.org/wikipedia/en/7/71/ABBA_-_Arrival.png'),
-(16, 12, 'Blurryface', 2015, 'https://upload.wikimedia.org/wikipedia/en/7/7d/Blurryface_by_Twenty_One_Pilots.png'),
-(17, 12, 'Trench', 2018, 'https://upload.wikimedia.org/wikipedia/en/f/f3/Trench_Twenty_One_Pilots.png'),
-(18, 12, 'Scaled and Icy', 2021, 'https://upload.wikimedia.org/wikipedia/en/5/52/Twenty_One_Pilots_-_Scaled_and_Icy.png'),
-(19, 12, 'Regional at Best', 2011, 'https://static.wikia.nocookie.net/twenty-one-pilots/images/3/3d/Regional_at_Best.png/revision/latest/scale-to-width-down/700?cb=20160427084359'),
-(20, 12, 'Self Titled ', 2009, 'https://upload.wikimedia.org/wikipedia/en/a/af/Twenty_One_Pilots_album_cover.png'),
-(22, 14, 'The Eminem Show', 2002, 'https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg'),
-(25, 15, 'Graduation', 2007, 'https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg'),
-(27, 17, 'Faces', 2014, 'https://upload.wikimedia.org/wikipedia/en/7/77/MacMillerFaces.jpg'),
-(48, 18, 'Highway to Hell', 1979, 'https://upload.wikimedia.org/wikipedia/en/a/ac/Acdc_Highway_to_Hell.JPG'),
-(49, 18, 'Back in Black', 1980, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ACDC_Back_in_Black_cover.svg/330px-ACDC_Back_in_Black_cover.svg.png'),
-(50, 19, 'OK Computer', 1997, 'https://upload.wikimedia.org/wikipedia/en/b/ba/Radioheadokcomputer.png'),
-(51, 20, 'Born to Run', 1975, 'https://upload.wikimedia.org/wikipedia/en/7/7a/Born_to_Run_%28Front_Cover%29.jpg'),
-(52, 21, 'Exile on Main St.', 1972, 'https://upload.wikimedia.org/wikipedia/en/c/ca/ExileMainSt.jpg'),
-(53, 22, 'Wish You Were Here', 1975, 'https://upload.wikimedia.org/wikipedia/en/a/a4/Pink_Floyd%2C_Wish_You_Were_Here_%281975%29.png'),
-(54, 23, 'A Night at the Opera', 1975, 'https://upload.wikimedia.org/wikipedia/en/4/4d/Queen_A_Night_At_The_Opera.png'),
-(56, 25, 'Rage Against the Machine', 1992, 'https://upload.wikimedia.org/wikipedia/en/1/1a/RageAgainsttheMachineRageAgainsttheMachine.jpg'),
-(58, 26, 'Master Of Puppets', 1986, 'https://metalstorm.net/images/albums/1/1221.jpg'),
-(69, 27, 'Paranoid', 1970, 'https://metalstorm.net/images/albums/2/269.jpg'),
-(70, 28, 'Rust in Peace', 1990, 'https://metalstorm.net/images/albums/1/1118.jpg'),
-(72, 29, 'See You on the Other Side', 2005, 'https://upload.wikimedia.org/wikipedia/en/5/57/Korn_-_See_You_on_the_Other_Side.jpg'),
-(74, 30, 'All Hope is Gone', 2008, 'https://upload.wikimedia.org/wikipedia/en/a/a9/All_Hope_is_Gone_%28original%29.jpg'),
-(76, 33, 'The Pale Emperor', 2015, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Marilyn_Manson_-_The_Pale_Emperor_%28album_cover%29.png'),
-(78, 32, 'Hybrid Theory', 2000, 'https://upload.wikimedia.org/wikipedia/en/2/2a/Linkin_Park_Hybrid_Theory_Album_Cover.jpg'),
-(80, 19, 'Hail to the Thief', 2003, 'https://upload.wikimedia.org/wikipedia/en/6/61/Radioheadhailtothethief.png'),
-(82, 36, 'A Fever You Can\'t Sweat Out', 2005, 'https://upload.wikimedia.org/wikipedia/en/e/e2/PanicAtTheDisco-FeverCover.jpg'),
-(85, 35, 'The Black Parade', 2006, 'https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg'),
-(86, 34, 'Showbiz', 1999, 'https://upload.wikimedia.org/wikipedia/en/9/9d/Museshowbizalbumcover.jpg'),
-(87, 34, 'Drones', 2015, 'https://upload.wikimedia.org/wikipedia/en/4/44/MuseDronesCover.jpg'),
-(88, 34, 'Will of the People', 2022, 'https://upload.wikimedia.org/wikipedia/en/1/12/Muse_-_Will_of_the_People.png'),
-(89, 34, 'Absolution', 2003, 'https://upload.wikimedia.org/wikipedia/en/b/b4/Muse_-_Absolution_Cover_UK.jpg'),
-(90, 34, 'Origin of Symmetry', 2001, 'https://upload.wikimedia.org/wikipedia/en/3/35/Muse_-_Origin_of_Symmetry_cover_art.png'),
-(91, 34, 'Black Holes and Revelations', 2006, 'https://upload.wikimedia.org/wikipedia/en/c/c5/BlackHolesCover.jpg');
+INSERT INTO `album` (`id`, `artist_id`, `genre_id`, `name`, `release_date`, `image_path`) VALUES
+(7, 7, 10, '1989', 2014, 'https://static.wikia.nocookie.net/taylor-swift/images/3/3a/Possible1989tvcover.jpg'),
+(8, 7, 10, 'Midnights', 2022, 'https://upload.wikimedia.org/wikipedia/en/9/9f/Midnights_-_Taylor_Swift.png'),
+(9, 8, 10, 'Justified', 2002, 'https://upload.wikimedia.org/wikipedia/en/e/ed/Justified_-_Justin_Timberlake.png'),
+(11, 9, 10, 'The Fame Monster', 2009, 'https://upload.wikimedia.org/wikipedia/en/4/45/The_Fame_Monster.png'),
+(13, 11, 10, 'Thriller ', 1982, 'https://upload.wikimedia.org/wikipedia/en/5/55/Michael_Jackson_-_Thriller.png'),
+(15, 10, 10, 'Arrival ', 1976, 'https://upload.wikimedia.org/wikipedia/en/7/71/ABBA_-_Arrival.png'),
+(16, 12, 11, 'Blurryface', 2015, 'https://upload.wikimedia.org/wikipedia/en/7/7d/Blurryface_by_Twenty_One_Pilots.png'),
+(17, 12, 12, 'Trench', 2018, 'https://upload.wikimedia.org/wikipedia/en/f/f3/Trench_Twenty_One_Pilots.png'),
+(18, 12, 10, 'Scaled and Icy', 2021, 'https://upload.wikimedia.org/wikipedia/en/5/52/Twenty_One_Pilots_-_Scaled_and_Icy.png'),
+(19, 12, 23, 'Regional at Best', 2011, 'https://static.wikia.nocookie.net/twenty-one-pilots/images/3/3d/Regional_at_Best.png/revision/latest/scale-to-width-down/700?cb=20160427084359'),
+(20, 12, 23, 'Self Titled ', 2009, 'https://upload.wikimedia.org/wikipedia/en/a/af/Twenty_One_Pilots_album_cover.png'),
+(22, 14, 11, 'The Eminem Show', 2002, 'https://upload.wikimedia.org/wikipedia/en/3/35/The_Eminem_Show.jpg'),
+(25, 15, 11, 'Graduation', 2007, 'https://upload.wikimedia.org/wikipedia/en/7/70/Graduation_%28album%29.jpg'),
+(27, 17, 23, 'Faces', 2014, 'https://upload.wikimedia.org/wikipedia/en/7/77/MacMillerFaces.jpg'),
+(48, 18, 12, 'Highway to Hell', 1979, 'https://upload.wikimedia.org/wikipedia/en/a/ac/Acdc_Highway_to_Hell.JPG'),
+(49, 18, 12, 'Back in Black', 1980, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/ACDC_Back_in_Black_cover.svg/330px-ACDC_Back_in_Black_cover.svg.png'),
+(50, 19, 23, 'OK Computer', 1997, 'https://upload.wikimedia.org/wikipedia/en/b/ba/Radioheadokcomputer.png'),
+(51, 20, 12, 'Born to Run', 1975, 'https://upload.wikimedia.org/wikipedia/en/7/7a/Born_to_Run_%28Front_Cover%29.jpg'),
+(52, 21, 12, 'Exile on Main St.', 1972, 'https://upload.wikimedia.org/wikipedia/en/c/ca/ExileMainSt.jpg'),
+(53, 22, 12, 'Wish You Were Here', 1975, 'https://upload.wikimedia.org/wikipedia/en/a/a4/Pink_Floyd%2C_Wish_You_Were_Here_%281975%29.png'),
+(54, 23, 23, 'A Night at the Opera', 1975, 'https://upload.wikimedia.org/wikipedia/en/4/4d/Queen_A_Night_At_The_Opera.png'),
+(56, 25, 23, 'Rage Against the Machine', 1992, 'https://upload.wikimedia.org/wikipedia/en/1/1a/RageAgainsttheMachineRageAgainsttheMachine.jpg'),
+(58, 26, 13, 'Master Of Puppets', 1986, 'https://metalstorm.net/images/albums/1/1221.jpg'),
+(69, 27, 13, 'Paranoid', 1970, 'https://metalstorm.net/images/albums/2/269.jpg'),
+(70, 28, 23, 'Rust in Peace', 1990, 'https://metalstorm.net/images/albums/1/1118.jpg'),
+(72, 29, 23, 'See You on the Other Side', 2005, 'https://upload.wikimedia.org/wikipedia/en/5/57/Korn_-_See_You_on_the_Other_Side.jpg'),
+(74, 30, 23, 'All Hope is Gone', 2008, 'https://upload.wikimedia.org/wikipedia/en/a/a9/All_Hope_is_Gone_%28original%29.jpg'),
+(76, 33, 23, 'The Pale Emperor', 2015, 'https://upload.wikimedia.org/wikipedia/en/5/5b/Marilyn_Manson_-_The_Pale_Emperor_%28album_cover%29.png'),
+(78, 32, 23, 'Hybrid Theory', 2000, 'https://upload.wikimedia.org/wikipedia/en/2/2a/Linkin_Park_Hybrid_Theory_Album_Cover.jpg'),
+(80, 19, 23, 'Hail to the Thief', 2003, 'https://upload.wikimedia.org/wikipedia/en/6/61/Radioheadhailtothethief.png'),
+(82, 36, 23, 'A Fever You Can\'t Sweat Out', 2005, 'https://upload.wikimedia.org/wikipedia/en/e/e2/PanicAtTheDisco-FeverCover.jpg'),
+(85, 35, 23, 'The Black Parade', 2006, 'https://upload.wikimedia.org/wikipedia/en/e/ea/Blackparadecover.jpg'),
+(86, 34, 23, 'Showbiz', 1999, 'https://upload.wikimedia.org/wikipedia/en/9/9d/Museshowbizalbumcover.jpg'),
+(87, 34, 23, 'Drones', 2015, 'https://upload.wikimedia.org/wikipedia/en/4/44/MuseDronesCover.jpg'),
+(88, 34, 23, 'Will of the People', 2022, 'https://upload.wikimedia.org/wikipedia/en/1/12/Muse_-_Will_of_the_People.png'),
+(89, 34, 23, 'Absolution', 2003, 'https://upload.wikimedia.org/wikipedia/en/b/b4/Muse_-_Absolution_Cover_UK.jpg'),
+(90, 34, 23, 'Origin of Symmetry', 2001, 'https://upload.wikimedia.org/wikipedia/en/3/35/Muse_-_Origin_of_Symmetry_cover_art.png'),
+(91, 34, 23, 'Black Holes and Revelations', 2006, 'https://upload.wikimedia.org/wikipedia/en/c/c5/BlackHolesCover.jpg');
 
 -- --------------------------------------------------------
 
@@ -109,13 +105,11 @@ INSERT INTO `album` (`id`, `artist_id`, `name`, `release_date`, `image_path`) VA
 -- Table structure for table `artist`
 --
 
-DROP TABLE IF EXISTS `artist`;
-CREATE TABLE IF NOT EXISTS `artist` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `gender` enum('female','male','group') COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `artist` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` enum('female','male','group') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `artist`
@@ -157,20 +151,41 @@ INSERT INTO `artist` (`id`, `name`, `gender`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `genre`
+--
+
+CREATE TABLE `genre` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `genre`
+--
+
+INSERT INTO `genre` (`id`, `name`) VALUES
+(10, 'pop'),
+(11, 'rap'),
+(12, 'rock'),
+(13, 'metal'),
+(14, 'alternative'),
+(17, 'polish-rock'),
+(23, 'GodLike');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `song`
 --
 
-DROP TABLE IF EXISTS `song`;
-CREATE TABLE IF NOT EXISTS `song` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `album_id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `duration` int NOT NULL,
-  `position` int NOT NULL,
-  `youtube_id` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `album_id` (`album_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `song` (
+  `id` int(11) NOT NULL,
+  `album_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `duration` int(11) NOT NULL,
+  `position` int(11) NOT NULL,
+  `youtube_id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `song`
@@ -236,6 +251,77 @@ INSERT INTO `song` (`id`, `album_id`, `name`, `duration`, `position`, `youtube_i
 (70, 13, 'The Lady In My Life', 300, 9, 'cJLH5yXoqi8');
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `album`
+--
+ALTER TABLE `album`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `artist_id` (`artist_id`,`genre_id`),
+  ADD KEY `genre_id` (`genre_id`);
+
+--
+-- Indexes for table `artist`
+--
+ALTER TABLE `artist`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `genre`
+--
+ALTER TABLE `genre`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `song`
+--
+ALTER TABLE `song`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `album_id` (`album_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `album`
+--
+ALTER TABLE `album`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
+--
+-- AUTO_INCREMENT for table `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `genre`
+--
+ALTER TABLE `genre`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `song`
+--
+ALTER TABLE `song`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -243,6 +329,7 @@ INSERT INTO `song` (`id`, `album_id`, `name`, `duration`, `position`, `youtube_i
 -- Constraints for table `album`
 --
 ALTER TABLE `album`
+  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`),
   ADD CONSTRAINT `album_ibfk_2` FOREIGN KEY (`artist_id`) REFERENCES `artist` (`id`);
 
 --
