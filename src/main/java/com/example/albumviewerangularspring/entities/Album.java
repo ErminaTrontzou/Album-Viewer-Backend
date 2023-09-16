@@ -1,7 +1,9 @@
 package com.example.albumviewerangularspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.io.Serializable;
 import java.time.Year;
@@ -11,26 +13,37 @@ import java.util.Set;
 @Table(name="album")
 public class Album implements Serializable {
 
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Getter
     @Column(name="name")
     private String name;
 
+    @Getter
     @Column(name = "release_date")
     private Year releaseDate;
 
+    @Getter
     @Column(name = "image_path")
     private String imagePath;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "genre_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Genre genreID;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "album")
+    @JsonIgnore
     private Set<Song> songs;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "artist_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore
     private Artist artist;
+
 
 
     public Album(){}
@@ -42,34 +55,30 @@ public class Album implements Serializable {
         this.imagePath = imagePath;
     }
 
-    public Integer getId() {
-        return id;
-    }
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
     public void setName(String name) {
         this.name = name;
     }
 
-    public Year getReleaseDate() {
-        return releaseDate;
-    }
     public void setReleaseDate(Year releaseDate) {
         this.releaseDate = releaseDate;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 
+    public Genre getGenreID() {
+        return genreID;
+    }
+    public void setGenreID(Genre genreID) {
+        this.genreID = genreID;
+    }
+
+    @JsonBackReference
     public Set<Song> getSongs() {
         return songs;
     }
@@ -83,5 +92,4 @@ public class Album implements Serializable {
     public void setArtist(Artist artist) {
         this.artist = artist;
     }
-
 }

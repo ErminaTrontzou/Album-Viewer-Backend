@@ -70,16 +70,16 @@ public class ArtistServiceTest {
 
     }
 
-    @Test
-    public void testGetAllAlbumsOfAnArtist(){
-        Integer mockArtistId = 1;
-        List<Album> mockAlbums = new ArrayList<>();
-        mockAlbums.add(new Album(1, "Album 1", Year.of(2020), "path1"));
-        mockAlbums.add(new Album(2, "Album 2", Year.of(2021), "path2"));
-
-        when(artistRepository.findAllByArtistId(mockArtistId)).thenReturn(mockAlbums);
-        final ResponseEntity<List<Album>> response = artistService.getAlbumsByArtist(mockArtistId);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(mockAlbums, response.getBody());
-    }
+//    @Test
+//    public void testGetAllAlbumsOfAnArtist(){
+//        Integer mockArtistId = 1;
+//        List<Album> mockAlbums = new ArrayList<>();
+//        mockAlbums.add(new Album(1, "Album 1", Year.of(2020), "path1"));
+//        mockAlbums.add(new Album(2, "Album 2", Year.of(2021), "path2"));
+//
+//        when(artistRepository.findAllByArtistId(mockArtistId)).thenReturn(mockAlbums);
+//        final ResponseEntity<List<Album>> response = artistService.getAlbumsByArtist(mockArtistId);
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertEquals(mockAlbums, response.getBody());
+//    }
 }

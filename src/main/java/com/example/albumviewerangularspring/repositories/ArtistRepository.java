@@ -18,6 +18,5 @@ public interface ArtistRepository extends CrudRepository<Artist,Integer> {
     @Query("SELECT id,name FROM Artist")
     List<Object> findArtistId();
 
-    @Query("SELECT a FROM Album a WHERE a.artist.id = ?1")
-    List<Album> findAllByArtistId(Integer artistId);
+
 }

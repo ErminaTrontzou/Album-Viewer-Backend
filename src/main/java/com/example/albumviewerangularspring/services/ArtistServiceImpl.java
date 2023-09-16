@@ -26,8 +26,6 @@ public class ArtistServiceImpl implements ArtistService {
     public  ResponseEntity<List<Object>> getAllArtistId(){
         return ResponseEntity.ok(artistRepository.findArtistId());
     }
-    @Override
-    public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id){
-        return ResponseEntity.ok(artistRepository.findAllByArtistId(id));
-    }
+
+
 }

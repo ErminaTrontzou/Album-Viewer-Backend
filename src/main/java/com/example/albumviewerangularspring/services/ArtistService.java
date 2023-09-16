@@ -11,5 +11,4 @@ public interface ArtistService {
     public ResponseEntity<List<Artist>> getAllArtists();
 
     public ResponseEntity<List<Object>> getAllArtistId();
-    public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id);
 }

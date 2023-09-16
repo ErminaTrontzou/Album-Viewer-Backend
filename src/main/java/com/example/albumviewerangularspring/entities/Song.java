@@ -2,9 +2,11 @@ package com.example.albumviewerangularspring.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.io.Serializable;
 
+@Getter
 @Entity
 @Table(name="song")
 public class Song implements Serializable {
@@ -36,37 +38,22 @@ public class Song implements Serializable {
         this.position = position;
     }
 
-    public Integer getId() {
-        return id;
-    }
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
     public void setName(String name) {
         this.name = name;
     }
 
-    public Integer getDuration() {
-        return duration;
-    }
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    public Integer getPosition() {
-        return position;
-    }
     public void setPosition(Integer position) {
         this.position = position;
     }
 
-    public Album getAlbum() {
-        return album;
-    }
     public void setAlbum(Album album) {
         this.album = album;
     }

@@ -88,19 +88,19 @@ public class ArtistControllerTest {
     }
 
 
-    @Test
-    public void getAllAlbumOfArtistFromService() throws Exception{
-        Integer mockArtistId = 1;
-        List<Album> mockAlbums = new ArrayList<>();
-        mockAlbums.add(new Album(1, "Album 1", Year.of(2020), "path1"));
-        mockAlbums.add(new Album(2, "Album 2", Year.of(2021), "path2"));
-
-        when(artistService.getAlbumsByArtist(mockArtistId)).thenReturn(ResponseEntity.ok(mockAlbums));
-        mockMvc.perform(MockMvcRequestBuilders
-                        .get("http://localhost:8080/api/v1/artist/albums")
-                        .param("id", mockArtistId.toString()))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("Album 1"))
-                .andExpect(jsonPath("$[1].name").value("Album 2"));
-    }
+//    @Test
+//    public void getAllAlbumOfArtistFromService() throws Exception{
+//        Integer mockArtistId = 1;
+//        List<Album> mockAlbums = new ArrayList<>();
+//        mockAlbums.add(new Album(1, "Album 1", Year.of(2020), "path1"));
+//        mockAlbums.add(new Album(2, "Album 2", Year.of(2021), "path2"));
+//
+//        when(artistService.getAlbumsByArtist(mockArtistId)).thenReturn(ResponseEntity.ok(mockAlbums));
+//        mockMvc.perform(MockMvcRequestBuilders
+//                        .get("http://localhost:8080/api/v1/artist/albums")
+//                        .param("id", mockArtistId.toString()))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$[0].name").value("Album 1"))
+//                .andExpect(jsonPath("$[1].name").value("Album 2"));
+//    }
 }
