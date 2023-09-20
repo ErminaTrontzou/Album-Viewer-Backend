@@ -24,6 +24,11 @@ public class AlbumController {
         return albumService.getAllAlbums();
     }
 
+    @GetMapping("/recent")
+    public ResponseEntity<List<Album>> listTop5ByOrderByCreatedAtDesc(){
+        return albumService.getTop5ByOrderByCreatedAtDesc();
+    }
+
     @GetMapping("/artist_id")
     public ResponseEntity<List<Album>> listAlbumsByArtist(@RequestParam Integer id){
         return albumService.getAlbumsByArtist(id);

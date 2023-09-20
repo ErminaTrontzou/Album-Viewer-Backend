@@ -22,6 +22,11 @@ public class AlbumServiceImpl implements AlbumService{
     }
 
     @Override
+    public ResponseEntity<List<Album>> getTop5ByOrderByCreatedAtDesc(){
+        return ResponseEntity.ok(albumRepository.findTop5ByOrderByReleaseDateDesc());
+    }
+
+    @Override
     public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id) {return ResponseEntity.ok(albumRepository.findAllByArtistId(id));};
 
     @Override

@@ -9,6 +9,8 @@ public interface AlbumService {
 
     public ResponseEntity<List<Album>> getAllAlbums();
 
+    public ResponseEntity<List<Album>> getTop5ByOrderByCreatedAtDesc();
+
     public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id);
 
     public ResponseEntity<List<Album>> getAllAlbumsByGenre(String genre);
