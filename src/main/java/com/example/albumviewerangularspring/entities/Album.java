@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
 import java.time.Year;
@@ -36,7 +38,6 @@ public class Album implements Serializable {
     private Genre genreID;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "album")
-    @JsonIgnore
     private Set<Song> songs;
 
     @ManyToOne(fetch = FetchType.LAZY)

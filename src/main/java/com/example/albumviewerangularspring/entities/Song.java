@@ -3,8 +3,10 @@ package com.example.albumviewerangularspring.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.BatchSize;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Getter
 @Entity
@@ -24,9 +26,9 @@ public class Song implements Serializable {
     @Column(name="position")
     private Integer position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="album_id", referencedColumnName = "id", nullable = false,unique = true)
     @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="album_id", referencedColumnName = "id", nullable = false)
     private Album album;
 
     public Song(){}

@@ -1,15 +1,14 @@
 package com.example.albumviewerangularspring.controller;
 
 import com.example.albumviewerangularspring.entities.Album;
+import com.example.albumviewerangularspring.entities.AlbumsOfArtists;
 import com.example.albumviewerangularspring.services.AlbumServiceImpl;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/v1/album")
 public class AlbumController {
@@ -20,12 +19,12 @@ public class AlbumController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Album>> listAllAlbums(){
+    public ResponseEntity<List<AlbumsOfArtists>> listAllAlbums(){
         return albumService.getAllAlbums();
     }
 
     @GetMapping("/recent")
-    public ResponseEntity<List<Album>> listTop5ByOrderByCreatedAtDesc(){
+    public ResponseEntity<List<AlbumsOfArtists>> listTop5ByOrderByCreatedAtDesc(){
         return albumService.getTop5ByOrderByCreatedAtDesc();
     }
 
@@ -35,7 +34,12 @@ public class AlbumController {
     }
 
     @GetMapping("/genre")
-    public ResponseEntity<List<Album>> listAlbumsByGenre(@RequestParam String name){
+    public ResponseEntity<List<AlbumsOfArtists>> listAlbumsByGenre(@RequestParam String name){
         return albumService.getAllAlbumsByGenre(name);
+    }
+
+    @GetMapping("/specific/{id}")
+    public ResponseEntity<List<AlbumsOfArtists>> listSpecificAlbum(@PathVariable Integer id){
+        return albumService.getCustomAlbumById(id);
     }
 }

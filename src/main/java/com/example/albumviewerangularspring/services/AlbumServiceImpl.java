@@ -1,6 +1,6 @@
 package com.example.albumviewerangularspring.services;
 
-import com.example.albumviewerangularspring.entities.Album;
+import com.example.albumviewerangularspring.entities.*;
 import com.example.albumviewerangularspring.repositories.AlbumRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,20 +17,30 @@ public class AlbumServiceImpl implements AlbumService{
     }
 
     @Override
-    public ResponseEntity<List<Album>> getAllAlbums(){
-        return ResponseEntity.ok(albumRepository.findAll());
+    public ResponseEntity<List<AlbumsOfArtists>> getAllAlbums(){
+        return ResponseEntity.ok(albumRepository.findAllAlbums());
     }
 
     @Override
-    public ResponseEntity<List<Album>> getTop5ByOrderByCreatedAtDesc(){
-        return ResponseEntity.ok(albumRepository.findTop5ByOrderByReleaseDateDesc());
+    public ResponseEntity<List<AlbumsOfArtists>> getTop5ByOrderByCreatedAtDesc(){
+        return ResponseEntity.ok(albumRepository.findTop6ByOrderByReleaseDateDesc());
     }
 
     @Override
     public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id) {return ResponseEntity.ok(albumRepository.findAllByArtistId(id));};
 
     @Override
-    public ResponseEntity<List<Album>> getAllAlbumsByGenre(String genre){
+    public ResponseEntity<List<AlbumsOfArtists>> getAllAlbumsByGenre(String genre){
         return ResponseEntity.ok(albumRepository.findAllAlbumsByGenre(genre));
     }
+
+//    @Override
+//    public ResponseEntity<SingleAlbum> getSpecificAlbumById(Integer id){
+//        return ResponseEntity.ok(albumRepository.findCustomAlbumById(id));
+//    }
+
+    public ResponseEntity<List<AlbumsOfArtists>> getCustomAlbumById(Integer id) {
+        return ResponseEntity.ok(albumRepository.findSingleAlbumByID(id));
+    }
+
 }

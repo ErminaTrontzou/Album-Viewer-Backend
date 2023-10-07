@@ -1,6 +1,7 @@
 package com.example.albumviewerangularspring.services;
 
 import com.example.albumviewerangularspring.entities.Album;
+import com.example.albumviewerangularspring.entities.AlbumsOfArtists;
 import com.example.albumviewerangularspring.entities.Artist;
 import com.example.albumviewerangularspring.repositories.ArtistRepository;
 import org.springframework.http.ResponseEntity;
