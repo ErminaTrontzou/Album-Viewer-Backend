@@ -31,7 +31,7 @@ public interface AlbumRepository extends JpaRepository<Album,Integer> {
             " from Album a " +
             "inner join a.artist ar " +
             "where a.genreID.name  = ?1")
-    List<AlbumsOfArtists> findAllAlbumsByGenre(String genreName);
+    List<AlbumsOfArtists> findAllAlbumsByGenre(@Param("name") String genreName);
 
     @Query("SELECT a.id as id, a.name as name, a.imagePath as imagePath, a.releaseDate as releaseDate, a.artist.name as artistName  " +
             "from Album a " +

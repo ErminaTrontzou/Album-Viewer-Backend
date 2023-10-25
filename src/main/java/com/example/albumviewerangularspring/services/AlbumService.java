@@ -14,7 +14,7 @@ public interface AlbumService {
 
     public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id);
 
-    public ResponseEntity<List<AlbumsOfArtists>> getAllAlbumsByGenre(String genre);
+    public ResponseEntity<List<AlbumsOfArtists>> getAllAlbumsByGenre(String genreName);
 
 //    public ResponseEntity<SingleAlbum> findCustomAlbumById(Integer id);
 

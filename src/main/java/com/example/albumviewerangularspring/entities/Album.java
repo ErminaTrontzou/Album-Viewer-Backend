@@ -32,7 +32,7 @@ public class Album implements Serializable {
     @Column(name = "image_path")
     private String imagePath;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     @JsonIgnore
     private Genre genreID;

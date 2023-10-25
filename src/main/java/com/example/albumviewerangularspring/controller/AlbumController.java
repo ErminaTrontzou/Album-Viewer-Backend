@@ -33,9 +33,9 @@ public class AlbumController {
         return albumService.getAlbumsByArtist(id);
     }
 
-    @GetMapping("/genre")
-    public ResponseEntity<List<AlbumsOfArtists>> listAlbumsByGenre(@RequestParam String name){
-        return albumService.getAllAlbumsByGenre(name);
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<AlbumsOfArtists>> listAlbumsByGenre(@PathVariable String genre){
+        return albumService.getAllAlbumsByGenre(genre);
     }
 
     @GetMapping("/specific/{id}")
