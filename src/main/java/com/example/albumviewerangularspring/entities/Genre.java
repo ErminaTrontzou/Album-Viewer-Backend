@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -17,13 +19,18 @@ public class Genre implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "genreID")
-    private Album album;
+    @Column(name = "picture")
+    private String picture;
+
+    @OneToMany(mappedBy = "genreID", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Album> albums;
+
 
     public Genre(){}
-    public Genre(Integer id, String name) {
+    public Genre(Integer id, String name, String picture) {
         this.id = id;
         this.name = name;
+        this.picture = picture;
     }
 
     public void setId(Integer id) {
@@ -34,7 +41,9 @@ public class Genre implements Serializable {
         this.name = name;
     }
 
-    public void setAlbum(Album album) {
-        this.album = album;
+    public void setPicture(String picture){ this.picture = picture; }
+
+    public void setAlbums(Set<Album> albums) {
+        this.albums = albums;
     }
 }
