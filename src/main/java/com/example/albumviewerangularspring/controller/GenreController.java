@@ -1,5 +1,6 @@
 package com.example.albumviewerangularspring.controller;
 
+import com.example.albumviewerangularspring.entities.Genre;
 import com.example.albumviewerangularspring.services.GenreServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public class GenreController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<String>> listAllGenreNames(){
-        return genreService.getAllGenreNames();
+    public ResponseEntity<List<Genre>> listAllGenre(){
+        return genreService.getAllGenre();
     }
 }

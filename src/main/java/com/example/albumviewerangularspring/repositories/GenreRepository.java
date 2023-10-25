@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface GenreRepository extends CrudRepository< Genre, Integer> {
 
-    @Query("Select g.name from Genre g")
-    List<String> findAllGenreNames();
+    @Query("Select g from Genre g")
+    List<Genre> findAllGenre();
 }

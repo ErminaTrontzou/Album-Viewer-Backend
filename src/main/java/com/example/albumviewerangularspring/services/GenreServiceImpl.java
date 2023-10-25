@@ -1,5 +1,6 @@
 package com.example.albumviewerangularspring.services;
 
+import com.example.albumviewerangularspring.entities.Genre;
 import com.example.albumviewerangularspring.repositories.GenreRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class GenreServiceImpl implements GenreService{
     }
 
     @Override
-    public ResponseEntity<List<String>> getAllGenreNames(){
-        return ResponseEntity.ok(genreRepository.findAllGenreNames());
+    public ResponseEntity<List<Genre>> getAllGenre(){
+        return ResponseEntity.ok(genreRepository.findAllGenre());
     }
 }
