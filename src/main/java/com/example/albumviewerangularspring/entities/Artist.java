@@ -21,6 +21,10 @@ public class Artist implements Serializable {
     @Column(name="name")
     private String name;
 
+    @Getter
+    @Column(name = "picture")
+    private String picture;
+
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "artist")
     @JsonIgnore
@@ -29,9 +33,10 @@ public class Artist implements Serializable {
 
     public Artist() {}
 
-    public Artist(Integer id, String name) {
+    public Artist(Integer id, String name, String picture) {
         this.id = id;
         this.name = name;
+        this.picture = picture;
     }
 
     public void setId(Integer id) {
@@ -41,6 +46,8 @@ public class Artist implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setPicture(String picture){ this.picture = picture;}
 
     @JsonManagedReference
     public Set<Album> getAlbums() {

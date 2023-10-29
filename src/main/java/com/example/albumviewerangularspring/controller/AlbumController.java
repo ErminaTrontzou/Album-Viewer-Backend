@@ -28,8 +28,8 @@ public class AlbumController {
         return albumService.getTop5ByOrderByCreatedAtDesc();
     }
 
-    @GetMapping("/artist_id")
-    public ResponseEntity<List<Album>> listAlbumsByArtist(@RequestParam Integer id){
+    @GetMapping("/artist_id/{id}")
+    public ResponseEntity<List<Album>> listAlbumsByArtist(@PathVariable Integer id){
         return albumService.getAlbumsByArtist(id);
     }
 
