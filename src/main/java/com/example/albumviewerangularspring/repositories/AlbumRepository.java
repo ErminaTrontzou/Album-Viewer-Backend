@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface AlbumRepository extends JpaRepository<Album,Integer> {
 
-    @Query("SELECT a.id as id, a.name AS name, a.releaseDate AS releaseDate, a.imagePath AS imagePath, ar.name AS artistName " +
+    @Query("SELECT a.id as id,  a.name AS name, a.releaseDate AS releaseDate, a.imagePath AS imagePath, ar.name AS artistName " +
                   "FROM Album a " +
             "INNER JOIN a.artist ar ")
     List<AlbumsOfArtists> findAllAlbums();
@@ -24,8 +24,11 @@ public interface AlbumRepository extends JpaRepository<Album,Integer> {
             "desc limit 6")
     List<AlbumsOfArtists> findTop6ByOrderByReleaseDateDesc();
 
-    @Query("SELECT a FROM Album a WHERE a.artist.id = ?1")
-    List<Album> findAllByArtistId(Integer artistId);
+    @Query("SELECT a.id as id, a.artist.id AS artistId, a.genreID.id AS genreId, a.name AS name, a.releaseDate AS releaseDate, a.imagePath AS imagePath" +
+            " FROM Album a " +
+            "WHERE a.artist.id = ?1")
+    List<AlbumsOfArtists> findAllByArtistId(Integer artistId);
+
 
     @Query("Select a.id as id, a.name AS name, a.releaseDate AS releaseDate, a.imagePath AS imagePath, ar.name AS artistName" +
             " from Album a " +

@@ -12,7 +12,7 @@ public interface AlbumService {
 
     public ResponseEntity<List<AlbumsOfArtists>> getTop5ByOrderByCreatedAtDesc();
 
-    public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id);
+    public ResponseEntity<List<AlbumsOfArtists>> getAlbumsByArtist(Integer id);
 
     public ResponseEntity<List<AlbumsOfArtists>> getAllAlbumsByGenre(String genreName);
 

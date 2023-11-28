@@ -6,6 +6,10 @@ import java.util.List;
 public interface AlbumsOfArtists {
 
     Integer getId();
+
+    Integer getArtistId();
+
+    Integer getGenreId();
     String getName();
     Year getReleaseDate();
     String getImagePath();

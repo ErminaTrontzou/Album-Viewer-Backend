@@ -26,8 +26,8 @@ public class Artist implements Serializable {
     private String picture;
 
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "artist")
     @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "artist")
     private Set<Album> albums;
 
 

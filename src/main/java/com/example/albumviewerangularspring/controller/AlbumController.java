@@ -29,7 +29,7 @@ public class AlbumController {
     }
 
     @GetMapping("/artist_id/{id}")
-    public ResponseEntity<List<Album>> listAlbumsByArtist(@PathVariable Integer id){
+    public ResponseEntity<List<AlbumsOfArtists>> listAlbumsByArtist(@PathVariable Integer id){
         return albumService.getAlbumsByArtist(id);
     }
 

@@ -27,7 +27,7 @@ public class AlbumServiceImpl implements AlbumService{
     }
 
     @Override
-    public ResponseEntity<List<Album>> getAlbumsByArtist(Integer id) {return ResponseEntity.ok(albumRepository.findAllByArtistId(id));};
+    public ResponseEntity<List<AlbumsOfArtists>> getAlbumsByArtist(Integer id) {return ResponseEntity.ok(albumRepository.findAllByArtistId(id));};
 
     @Override
     public ResponseEntity<List<AlbumsOfArtists>> getAllAlbumsByGenre(String genreName){
