@@ -1,6 +1,7 @@
 package com.example.albumviewerangularspring.services;
 
 import com.example.albumviewerangularspring.entities.Song;
+import com.example.albumviewerangularspring.entities.SongsOfAlbum;
 import com.example.albumviewerangularspring.repositories.SongRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class SongServiceImpl implements SongService {
     }
 
     @Override
-    public ResponseEntity<List<Song>> getAllSongsFromSpecificAlbum(Integer id){
+    public ResponseEntity<List<SongsOfAlbum>> getAllSongsFromSpecificAlbum(Integer id){
         return ResponseEntity.ok(songRepository.listAllSongsFromSpecificAlbum(id));
     }
 }

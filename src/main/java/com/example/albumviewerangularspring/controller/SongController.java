@@ -1,6 +1,7 @@
 package com.example.albumviewerangularspring.controller;
 
 import com.example.albumviewerangularspring.entities.Song;
+import com.example.albumviewerangularspring.entities.SongsOfAlbum;
 import com.example.albumviewerangularspring.services.SongServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class SongController {
     }
 
     @GetMapping("/specific-album/{id}")
-    public ResponseEntity<List<Song>> listAllSongsOfSpecificAlbum(@PathVariable Integer id){
+    public ResponseEntity<List<SongsOfAlbum>> listAllSongsOfSpecificAlbum(@PathVariable Integer id){
         return songService.getAllSongsFromSpecificAlbum(id);
     }
 }
