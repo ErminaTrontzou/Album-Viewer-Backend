@@ -17,6 +17,17 @@ public class AlbumServiceImpl implements AlbumService{
     }
 
     @Override
+    public ResponseEntity<Integer> getCountOfAllAlbums() {
+        return ResponseEntity.ok(albumRepository.countAllAlbums());
+    }
+
+    @Override
+    public ResponseEntity<List<Object[]>> getCountAlbumsByArtist() {
+        return ResponseEntity.ok(albumRepository.countAlbumsByArtist());
+    }
+
+
+    @Override
     public ResponseEntity<List<AlbumsOfArtists>> getAllAlbums(){
         return ResponseEntity.ok(albumRepository.findAllAlbums());
     }

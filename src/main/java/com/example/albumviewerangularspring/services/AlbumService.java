@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface AlbumService {
 
+    public  ResponseEntity<Integer> getCountOfAllAlbums();
+
+    public ResponseEntity<List<Object[]>> getCountAlbumsByArtist();
+
     public ResponseEntity<List<AlbumsOfArtists>> getAllAlbums();
 
     public ResponseEntity<List<AlbumsOfArtists>> getTop5ByOrderByCreatedAtDesc();

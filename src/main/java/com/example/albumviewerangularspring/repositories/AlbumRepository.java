@@ -12,6 +12,13 @@ import java.util.List;
 @Repository
 public interface AlbumRepository extends JpaRepository<Album,Integer> {
 
+    @Query("SELECT COUNT(a.id) FROM Album a")
+    Integer countAllAlbums();
+
+    @Query("SELECT a.artist.name AS artistName, COUNT(a.id) AS totalAlbums FROM Album a GROUP BY a.artist")
+    List<Object[]> countAlbumsByArtist();
+
+
     @Query("SELECT a.id as id,  a.name AS name, a.releaseDate AS releaseDate, a.imagePath AS imagePath, ar.name AS artistName " +
                   "FROM Album a " +
             "INNER JOIN a.artist ar ")

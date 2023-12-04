@@ -23,6 +23,17 @@ public class AlbumController {
         return albumService.getAllAlbums();
     }
 
+    @GetMapping("/count")
+    public ResponseEntity<Integer> listCountOfAllAlbums() {
+        return albumService.getCountOfAllAlbums();
+    }
+
+    @GetMapping("/artist-count")
+    public ResponseEntity<List<Object[]>> countAlbumsByArtist() {
+        return albumService.getCountAlbumsByArtist();
+    }
+
+
     @GetMapping("/recent")
     public ResponseEntity<List<AlbumsOfArtists>> listTop5ByOrderByCreatedAtDesc(){
         return albumService.getTop5ByOrderByCreatedAtDesc();
