@@ -41,4 +41,4 @@ cd Album-Viewer-Backend
 Visit `http://localhost:8080/` in your web browser to interact with the backend.
 
 ## License
-The Album Viewer Site is licensed under the MIT license, promoting open-source collaboration and reuse.
+The Album Viewer Site is licensed under the [MIT license](LICENSE), promoting open-source collaboration and reuse.
