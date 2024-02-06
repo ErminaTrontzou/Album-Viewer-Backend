@@ -14,7 +14,7 @@ The backend follows the standard Entity-Repository-Service-Controller pattern, w
   - **Service**: Contains business logic and calls the repositories to fetch or update data.
   - **Controller**: Handles HTTP requests and delegates processing to the services.
 
-##Future Plan
+## Future Plan
   - **CRUD System**: Implement a complete system for creating, reading, updating, and deleting entries.
   - **Login System**: Introduce authentication to secure access to the admin panel.
   
