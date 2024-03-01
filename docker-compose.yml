@@ -10,6 +10,7 @@ services:
        SPRING_DATASOURCE_USERNAME : root
        SPRING_DATASOURCE_PASSWORD: root
        SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+       SPOTIFY_API_TOKEN : BQBzNxb1Sy8-JaYZCL9X5kbStUeG-ub7UJ4A0dAxpJGyR8TGob3Rs1468Bc7WmC5_QS8UTEUbn7BI-luDmEngp5zgdtc44Tszf-08PyryRI3zZdUwFs
     depends_on:
       - db
     restart: unless-stopped

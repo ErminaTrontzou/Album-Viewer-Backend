@@ -1,6 +1,5 @@
 package com.example.albumviewerangularspring.controller;
 
-import com.example.albumviewerangularspring.entities.Song;
 import com.example.albumviewerangularspring.entities.SongsOfAlbum;
 import com.example.albumviewerangularspring.services.SongServiceImpl;
 import org.springframework.http.ResponseEntity;
