@@ -28,4 +28,13 @@ public class SpotifyController {
 
         return spotifyService.getArtistAlbums(artistId, includeGroups, market, limit, offset);
     }
+
+    @GetMapping("/new-releases")
+    public ResponseEntity<String> getNewReleases(
+            @RequestParam int limit,
+            @RequestParam int offset) throws IOException {
+        return spotifyService.getNewReleases(limit,offset);
+    }
+
+
 }
