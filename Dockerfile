@@ -1,7 +1,8 @@
 # Stage  1: Build the application
 FROM gradle:jdk17 as build
 WORKDIR /home/gradle/src
-COPY . .
+COPY src/ src/
+COPY build.gradle build.gradle
 # Ensure the Gradle Wrapper script is executable
 #RUN chmod +x ./gradlew
 #RUN ./gradlew clean build -x test --no-daemon
