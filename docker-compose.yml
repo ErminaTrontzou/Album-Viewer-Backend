@@ -6,11 +6,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ospotemou?characterEncoding=latin1&useConfigs=maxPerformance
-       SPRING_DATASOURCE_USERNAME : root
-       SPRING_DATASOURCE_PASSWORD: root
-       SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
-       SPOTIFY_API_TOKEN : BQAvm_bf7aw47FDzpPVUvmQ_oXSArMPFO88tBrPCk-rheE-rXWOOGt8nn4_bqci5NI9srtSIFweIJzD0lkTmPtcGojRTd8maHt8Bqsw1VUhH-DXHNCY
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/ospotemou?characterEncoding=latin1&useConfigs=maxPerformance
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+      SPOTIFY_API_TOKEN: BQB0U5qHP1oFIc2WzJjeCo_E_PbkOK7OkxlRaWh8h8NWAFAGJGgryuO0ndXxbLLfXIlBCGUxq9MqMQqaFnt2vnrm8I7YCbqjHRSf63IYw3QQ-K2SMjM
     depends_on:
       - db
     restart: unless-stopped
@@ -21,6 +21,12 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - mysql_data:/var/lib/mysql
+    restart: unless-stopped
+
+  album-viewer-frontend:
+    build: ../../AngularProjects/album-viewer
+    ports:
+      - "80:80"
     restart: unless-stopped
 
 volumes:
